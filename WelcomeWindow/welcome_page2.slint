@@ -1,18 +1,13 @@
-import { HeaderWelcomeWindow } from "header.slint";
-import {WelcomePageStats } from "welcome_page_stats.slint";
+import {HeaderWelcomeWindow} from "header_welcome_window.slint";
+import {WelcomePageStats} from "welcome_page_stats.slint";
 
-export component WelcomeWindow inherits Window {
-    width: 1100px;
-    height: 720px;
-    background: #0F172A;
-    title: "fixIT - Dashboard";
+
+export component WelcomePage2 {
 
     in-out property <int> memory_usage: 0;
     in-out property <int> cpu_usage: 0;
     in-out property <int> disk_usage: 0;
     in-out property <bool> is_connected: false;
-
-    callback check_connection();
 
 
     VerticalLayout {
@@ -50,4 +45,5 @@ export component WelcomeWindow inherits Window {
             }
         }
     }
+    
 }
