@@ -1,0 +1,53 @@
+import { HeaderWelcomeWindow } from "header.slint";
+import {WelcomePageStats } from "welcome_page_stats.slint";
+
+export component WelcomeWindow inherits Window {
+    width: 1100px;
+    height: 720px;
+    background: #0F172A;
+    title: "fixIT - Dashboard";
+
+    in-out property <int> memory_usage: 0;
+    in-out property <int> cpu_usage: 0;
+    in-out property <int> disk_usage: 0;
+    in-out property <bool> is_connected: false;
+
+    callback check_connection();
+
+
+    VerticalLayout {
+        spacing: 32px;
+        padding-top: 40px;
+        alignment: start;
+
+        HeaderWelcomeWindow {}
+    
+        HorizontalLayout {
+            alignment: center;
+            WelcomePageStats {
+                width: parent.width * 0.90;
+                cpu_usage: root.cpu_usage;
+                memory_usage: root.memory_usage;
+                disk_usage: root.disk_usage;
+                is_connected: root.is_connected;
+            }
+        }
+
+        VerticalLayout {
+            padding-left: 40px;
+            padding-right: 40px;
+            spacing: 16px;
+            Text { text: "O que deseja utilizar?"; font-size: 24px; color: #94A3B8; font-weight: 600; }
+
+            Rectangle {
+                width: parent.width - 80px;
+                height: 2px;
+                background: #334155;
+
+                drop-shadow-color: #00000040;
+                drop-shadow-blur: 8px;
+                drop-shadow-offset-y: 4px;  
+            }
+        }
+    }
+}
