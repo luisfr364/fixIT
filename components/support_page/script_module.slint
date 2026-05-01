@@ -1,0 +1,55 @@
+export component ScriptModule {
+
+    in property <string> script_name;
+    in property <string> script_description;
+
+    Rectangle {
+
+        background: #1E293B;
+        border-radius: 12px;
+        border-width: 1px;
+        border-color: #334155;
+        width: 100%;
+        
+        drop-shadow-color: #00000040;
+        drop-shadow-blur: 8px;
+        drop-shadow-offset-y: 4px;
+        
+  
+            HorizontalLayout {
+
+                padding: 24px;
+                spacing: 16px;
+
+                Image {
+                    width: 40px;
+                    height: 40px;
+                }
+            
+    
+       
+                VerticalLayout {
+                    alignment: start;
+                    width: 280px;
+                    Text {
+                        text: root.script_name;
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: #F8FAFC;
+                    }
+    
+                    Text {
+                        text: root.script_description;
+                        font-size: 14px;
+                        color: #94A3B8;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            
+        
+    
+    }
+
+}

@@ -1,11 +1,41 @@
 import { ScrollView } from "std-widgets.slint";
-export component ScriptsList {
-    
-    
-    ScrollView {
-        width: parent.width;
-        height: parent.height;
+import { ScriptModule } from "script_module.slint";
 
+
+export component ScriptsList {
+
+
+    property <[{name: string, description: string}]> scripts: [
+        { name: "Limpeza de Arquivos Temporários", description: "Remova arquivos temporários e\nlibere espaço no seu sistema." },
+        { name: "Atualização de Drivers", description: "Mantenha seus drivers atualizados para\nmelhor desempenho e estabilidade." },
+        { name: "Atualização de Drivers", description: "Mantenha seus drivers atualizados para\nmelhor desempenho e estabilidade." },
+        { name: "Atualização de Drivers", description: "Mantenha seus drivers atualizados para\nmelhor desempenho e estabilidade." },
+    ];
+    
+    VerticalLayout {
+        padding-left: 24px;
+
+        ScrollView {
+            width: root.width;
+            height: root.height;
+            viewport-width: self.width;
+            viewport-height: 300px;
+    
+    
+    
+            GridLayout {
+                width: parent.width;  
+                spacing: 16px;
+    
+                for module[i] in scripts : ScriptModule {
+                    row: Math.floor(i / 2);
+                    col: Math.mod(i, 2);
+                    width: (root.width - 16px) / 2;
+                    script_name: module.name;
+                    script_description: module.description;
+                }
+            }
+    }
     }
     
 }

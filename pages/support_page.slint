@@ -1,3 +1,4 @@
+import { ScriptsList } from "../components/support_page/scripts_list.slint";
 export component SupportPage {
     
     // Temp properties for testing
@@ -5,15 +6,24 @@ export component SupportPage {
     width: 1100px;
     height: 720px;
 
+    in-out property <{name: string, description: string}> selected_script;
+
 
     VerticalLayout {
 
         HorizontalLayout {
+        height: parent.height * 0.15;
         alignment: center;
         padding-top: 24px;
         padding-bottom: 24px;
 
-        Text { text: "Como posso ajudar hoje?"; font-size: 28px; font-weight: 700; color: #F8FAFC; }
+        Text { text: "Suporte Técnico"; font-size: 28px; font-weight: 700; color: #F8FAFC; }
+        }
+
+        ScriptsList {
+            height: parent.height * 0.3;
+            width: parent.width * 0.85;
+            
         }
 
     }
