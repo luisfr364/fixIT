@@ -1,13 +1,17 @@
-import {HeaderWelcomeWindow} from "header_welcome_window.slint";
-import {WelcomePageStats} from "welcome_page_stats.slint";
+import {HeaderWelcomeWindow} from "../components/welcome_page/header_welcome_window.slint";
+import {WelcomePageStats} from "../components/welcome_page/welcome_page_stats.slint";
+import { ModulesList } from "../components/welcome_page/modules_list.slint";
 
 
-export component WelcomePage2 {
+export component WelcomePage {
 
     in-out property <int> memory_usage: 0;
     in-out property <int> cpu_usage: 0;
     in-out property <int> disk_usage: 0;
     in-out property <bool> is_connected: false;
+
+    // Callback function passed down to module list and then to each module
+    callback navigate_to(string);
 
 
     VerticalLayout {
@@ -42,6 +46,11 @@ export component WelcomePage2 {
                 drop-shadow-color: #00000040;
                 drop-shadow-blur: 8px;
                 drop-shadow-offset-y: 4px;  
+            }
+
+            ModulesList {
+                width: parent.width - 80px;
+                navigate_to(page) => { root.navigate_to(page); }
             }
         }
     }

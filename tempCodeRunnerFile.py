@@ -1,5 +1,1 @@
-        # self.timer.start(
-        #     slint.TimerMode.Repeated,
-        #     datetime.timedelta(minutes=5),
-        #     self.check_connection
-        #     )
+        self.navigate_to = self.modules_list_controller.on_navigate_to  # Conecta o callback de navegação ao controlador

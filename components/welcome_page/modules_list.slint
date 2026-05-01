@@ -1,0 +1,50 @@
+import { WelcomeWindowModule } from "./welcome_window_module.slint";
+
+export component ModulesList {
+    callback navigate_to(string);
+
+    GridLayout {
+
+        width: parent.width;
+        spacing: 20px;
+
+
+        Row {
+
+            WelcomeWindowModule {
+                module_title: "Monitoramento";
+                module_name: "monitoring";
+                module_description: "Acompanhe o desempenho do seu sistema em tempo real.";
+                navigate_to(page) => { root.navigate_to(page); }
+            }
+    
+            WelcomeWindowModule {
+                module_title: "Configurações";
+                module_name: "settings";
+                module_description: "Personalize as preferências do aplicativo e do sistema.";
+                navigate_to(page) => { root.navigate_to(page); }
+            }
+        }
+
+        Row {
+
+            WelcomeWindowModule {
+                module_title: "Atualizações";
+                module_name: "updates";
+                module_description: "Mantenha seu sistema atualizado com os últimos patches de segurança.";
+                navigate_to(page) => { root.navigate_to(page); }
+            }
+    
+            WelcomeWindowModule {
+                module_title: "Suporte Técnico";
+                module_name: "support";
+                module_description: "Obtenha ajuda e suporte para resolver problemas técnicos.";
+                navigate_to(page) => { root.navigate_to(page); }
+            }
+        }
+
+
+
+    }
+    
+}

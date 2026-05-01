@@ -1,0 +1,48 @@
+export component WelcomeWindowModule {
+
+    in property <string> module_name;
+    in property <string> module_title;
+    in property <string> module_description;
+    in-out property <int> name; 
+
+    callback navigate_to(string);
+
+    Rectangle {
+        background: #0F172A;
+        border-radius: 12px;
+        border-width: 1px;
+        border-color: #334155;
+        width: 100%;
+
+
+        drop-shadow-color: #00000040;
+        drop-shadow-blur: 8px;
+        drop-shadow-offset-y: 4px;
+
+        TouchArea {
+            x: 89px;
+            width: 557px;
+            clicked => {
+                root.navigate_to(module_name);
+            }
+        }
+
+
+        VerticalLayout {
+            spacing: 6px;
+            padding: 24px;
+            Text {
+                text: root.module_title;
+                font-size: 18px;
+                font-weight: 700;
+                color: #F8FAFC;
+            }
+            Text {
+                text: root.module_description;
+                font-size: 14px;
+                color: #94A3B8;
+                font-weight: 600;
+            }
+        }
+    }
+}

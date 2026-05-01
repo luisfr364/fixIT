@@ -1,14 +1,8 @@
 import slint
-import time
-import shutil
-import psutil
-import threading
-import os
-import datetime
 
 
-import urllib.request
 
+from controllers.modules_list_controller import ModulesListController
 from controllers.welcome_page_controller import WelcomePageController
 
 
@@ -16,7 +10,7 @@ from controllers.welcome_page_controller import WelcomePageController
 
 
 
-
+# Loads the main window from the .slint file and creates a class for it
 ui_slint = slint.loader.main_window.MainWindow
 
 class App(ui_slint):
@@ -24,6 +18,8 @@ class App(ui_slint):
         super().__init__()
 
         self.welcome_page_controller = WelcomePageController(self)
+        self.modules_list_controller = ModulesListController(self)
+        self.navigate_to = self.modules_list_controller.on_navigate_to  # Conecta o callback de navegação ao controlador
 
 
     

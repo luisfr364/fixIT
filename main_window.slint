@@ -1,6 +1,6 @@
 
-import {WelcomePageStats } from "./WelcomeWindow/welcome_page_stats.slint";
-import { WelcomePage2 } from "./WelcomeWindow/welcome_page2.slint";
+import {WelcomePageStats } from "./components/welcome_page_stats.slint";
+import { WelcomePage } from "./pages/welcome_page.slint";
 
 export component MainWindow inherits Window {
     width: 1100px;
@@ -8,14 +8,19 @@ export component MainWindow inherits Window {
     background: #0F172A;
     title: "fixIT - Dashboard";
 
+    callback navigate_to(string);
+
+    // Property used to control which page is currently being displayed in the MainWindow
     in-out property <string> current_page: "welcome";
 
+    // Properties used by other components
+    // These are updated by the controller of each component
     in-out property <int> memory_usage: 0;
     in-out property <int> cpu_usage: 0;
     in-out property <int> disk_usage: 0;
     in-out property <bool> is_connected: false;
 
-    if (root.current_page == "welcome") : WelcomePage2 {
+    if (root.current_page == "welcome") : WelcomePage {
         width: parent.width;
         height: parent.height;
 
@@ -23,6 +28,13 @@ export component MainWindow inherits Window {
         memory_usage: root.memory_usage;
         disk_usage: root.disk_usage;
         is_connected: root.is_connected;
+
+        navigate_to(page) => { root.navigate_to(page); }
+
+    }
+
+    if (root.current_page == "monitoring") : Text {
+        text: "Monitoring";
     }
 
 
