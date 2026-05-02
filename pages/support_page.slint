@@ -1,4 +1,5 @@
 import { ScriptsList } from "../components/support_page/scripts_list.slint";
+import { ScriptDetails } from "../components/support_page/script_details.slint";
 export component SupportPage {
     
     // Temp properties for testing
@@ -8,8 +9,12 @@ export component SupportPage {
 
     in-out property <{name: string, description: string}> selected_script;
 
+    callback handle_script_module_select(name: string, description: string);
+
 
     VerticalLayout {
+
+        
 
         HorizontalLayout {
         height: parent.height * 0.15;
@@ -23,8 +28,28 @@ export component SupportPage {
         ScriptsList {
             height: parent.height * 0.3;
             width: parent.width * 0.85;
+
+            handle_script_module_click(name, description) => { root.handle_script_module_select(name, description); }
             
         }
+
+
+
+        HorizontalLayout {
+            width: root.width;
+            padding-top: 86px;
+            padding: 20px;
+
+            ScriptDetails {
+                selected_script: root.selected_script;
+
+                width: root.width * 0.40;
+                height: root.height * 0.40;
+            }
+
+        }
+        
+
 
     }
     

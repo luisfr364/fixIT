@@ -5,6 +5,8 @@ import { ModulesList } from "../components/welcome_page/modules_list.slint";
 
 export component WelcomePage {
 
+    // TO-DO: Refactor code to use global AppState properties instead of local ones
+    // When slint fix the global 
     in-out property <int> memory_usage: 0;
     in-out property <int> cpu_usage: 0;
     in-out property <int> disk_usage: 0;

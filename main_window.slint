@@ -2,13 +2,17 @@
 import { WelcomePage } from "./pages/welcome_page.slint";
 import { SupportPage } from "pages/support_page.slint";
 
+
 export component MainWindow inherits Window {
     width: 1100px;
     height: 720px;
     background: #0F172A;
     title: "fixIT - Dashboard";
 
+
+    // Callbacks used by components
     callback navigate_to(string);
+    callback handle_script_module_click(name: string, description: string);
 
     // Property used to control which page is currently being displayed in the MainWindow
     in-out property <string> current_page: "welcome";
@@ -19,6 +23,8 @@ export component MainWindow inherits Window {
     in-out property <int> cpu_usage: 0;
     in-out property <int> disk_usage: 0;
     in-out property <bool> is_connected: false;
+
+    in-out property <{name: string, description: string}> selected_script: {name: "", description: ""};
 
     if (root.current_page == "welcome") : WelcomePage {
         width: parent.width;
@@ -36,6 +42,10 @@ export component MainWindow inherits Window {
     if (root.current_page == "support") : SupportPage {
         width: parent.width;
         height: parent.height;
+
+        selected_script: root.selected_script;
+        handle_script_module_select(name, description) => { root.handle_script_module_click(name, description); }
+
         // TO-DO: Implement later
         // navigate_back() => { root.current_page = "welcome"; }
     }

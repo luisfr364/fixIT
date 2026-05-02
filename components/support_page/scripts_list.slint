@@ -4,6 +4,8 @@ import { ScriptModule } from "script_module.slint";
 
 export component ScriptsList {
 
+    callback handle_script_module_click(name: string, description: string);
+
 
     property <[{name: string, description: string}]> scripts: [
         { name: "Limpeza de Arquivos Temporários", description: "Remova arquivos temporários e\nlibere espaço no seu sistema." },
@@ -33,6 +35,10 @@ export component ScriptsList {
                     width: (root.width - 16px) / 2;
                     script_name: module.name;
                     script_description: module.description;
+
+                    handle_script_module_click => {
+                        root.handle_script_module_click(module.name, module.description);
+                    }
                 }
             }
     }
