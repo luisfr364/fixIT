@@ -12,9 +12,16 @@ export component ScriptDetails {
         VerticalLayout {
             padding-left: 24px;
             padding-top: 24px;
+
+            HorizontalLayout {
+                Image {
+                    width: 60px;
+                    height: 60px;
+                }
+                Text { text: "Lorem Ipsum Dolor"; font-size: 28px; font-weight: 700; color: #F8FAFC; }
+            }
     
-            Text { text: root.selected_script.name; font-size: 28px; font-weight: 700; color: #F8FAFC; }
-            Text { text: root.selected_script.description; font-size: 18px; font-weight: 400; color: #94A3B8; }
+            Text { text: "Lorem ipsum dolor sit amet, consectetur adipiscing \nelit. Sed do eiusmod tempor incididunt \nut labore et dolore magna aliqua."; font-size: 18px; font-weight: 400; color: #94A3B8; }
         }
     }
 
