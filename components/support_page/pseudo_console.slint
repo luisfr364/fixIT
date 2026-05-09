@@ -1,0 +1,39 @@
+import { ScrollView } from "std-widgets.slint";
+export component PseudoConcosole {
+
+    in-out property <string> console_output;
+
+
+    Rectangle {
+        background: #1E293B;
+        border-radius: 8px;
+        ScrollView {
+
+
+            vertical-stretch: 1;
+            horizontal-stretch: 1;
+
+            VerticalLayout {
+                padding: 14px;
+                alignment: start;
+                spacing: 14px;
+
+                Text {
+                    text: "Console";
+                    font-size: 14px;
+                    color: white;
+                    font-family: "Segoe UI";
+                }
+
+                Text {
+                    text: root.console_output;
+                    font-size: 14px;
+                    color: #94A3B8;
+                    font-family: "Consolas";
+                }
+            }
+        }
+    }
+
+    
+}

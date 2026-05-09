@@ -24,6 +24,7 @@ class App(ui_slint):
 
         self.handle_script_module_click = self.support_page_controller.on_script_module_click  # Conecta o callback de clique do script ao controlador
         self.navigate_to = self.modules_list_controller.on_navigate_to  # Conecta o callback de navegação ao controlador
+        self.handle_script_execution = self.support_page_controller.on_run_script
 
 
     

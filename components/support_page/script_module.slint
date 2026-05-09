@@ -4,6 +4,7 @@ export component ScriptModule {
     in property <string> script_name;
     in property <string> script_description;
     callback handle_script_module_click(string, string);
+    callback handle_script_execution();
 
     Rectangle {
 
@@ -71,6 +72,14 @@ export component ScriptModule {
                         height: 30px;
                         
                         padding-top: 6px;
+
+                        TouchArea {
+
+                            clicked => {
+                                root.handle_script_module_click(root.script_name, root.script_description);
+                                root.handle_script_execution();
+                            }
+                        }
     
     
                         VerticalLayout {

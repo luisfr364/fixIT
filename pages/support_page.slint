@@ -1,5 +1,6 @@
 import { ScriptsList } from "../components/support_page/scripts_list.slint";
 import { ScriptDetails } from "../components/support_page/script_details.slint";
+import { PseudoConcosole } from "../components/support_page/pseudo_console.slint";
 export component SupportPage {
     
     // Temp properties for testing
@@ -7,9 +8,11 @@ export component SupportPage {
     width: 1100px;
     height: 720px;
 
-    in-out property <{name: string, description: string}> selected_script;
+    in-out property <{name: string, description: string, name_short: string}> selected_script;
+    in-out property <string> console_output;
 
     callback handle_script_module_select(name: string, description: string);
+    callback handle_script_execution();
 
 
     VerticalLayout {
@@ -30,6 +33,7 @@ export component SupportPage {
             width: parent.width * 0.85;
 
             handle_script_module_click(name, description) => { root.handle_script_module_select(name, description); }
+            handle_script_execution => {root.handle_script_execution();}
             
         }
 
@@ -39,11 +43,19 @@ export component SupportPage {
             width: root.width;
             padding-top: 86px;
             padding: 20px;
+            spacing: 20px;
 
             ScriptDetails {
                 selected_script: root.selected_script;
 
-                width: root.width * 0.40;
+                width: root.width * 0.45;
+                height: root.height * 0.40;
+            }
+
+            PseudoConcosole {
+                console_output: root.console_output;
+
+                width: root.width * 0.50;
                 height: root.height * 0.40;
             }
 

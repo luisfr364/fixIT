@@ -13,6 +13,7 @@ export component MainWindow inherits Window {
     // Callbacks used by components
     callback navigate_to(string);
     callback handle_script_module_click(name: string, description: string);
+    callback handle_script_execution();
 
     // Property used to control which page is currently being displayed in the MainWindow
     in-out property <string> current_page: "welcome";
@@ -24,7 +25,9 @@ export component MainWindow inherits Window {
     in-out property <int> disk_usage: 0;
     in-out property <bool> is_connected: false;
 
-    in-out property <{name: string, description: string}> selected_script: {name: "", description: ""};
+    //Support page properties
+    in-out property <string> console_output: "Nenhuma saída ainda...";
+    in-out property <{name: string, description: string, name_short: string}> selected_script: {name: "", description: "", name_short: ""};
 
     if (root.current_page == "welcome") : WelcomePage {
         width: parent.width;
@@ -43,8 +46,10 @@ export component MainWindow inherits Window {
         width: parent.width;
         height: parent.height;
 
+        console_output: root.console_output;  
         selected_script: root.selected_script;
         handle_script_module_select(name, description) => { root.handle_script_module_click(name, description); }
+        handle_script_execution => {root.handle_script_execution()}
 
         // TO-DO: Implement later
         // navigate_back() => { root.current_page = "welcome"; }
