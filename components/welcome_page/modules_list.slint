@@ -17,13 +17,14 @@ export component ModulesList {
                 module_description: "Acompanhe o desempenho do seu sistema em tempo real.";
                 navigate_to(page) => { root.navigate_to(page); }
             }
-    
-            WelcomeWindowModule {
-                module_title: "Configurações";
-                module_name: "settings";
-                module_description: "Personalize as preferências do aplicativo e do sistema.";
-                navigate_to(page) => { root.navigate_to(page); }
-            }
+
+            // TODO: Create this component and then uncomment it
+            // WelcomeWindowModule {
+            //     module_title: "Configurações";
+            //     module_name: "settings";
+            //     module_description: "Personalize as preferências do aplicativo e do sistema.";
+            //     navigate_to(page) => { root.navigate_to(page); }
+            // }
         }
 
         Row {
@@ -34,7 +35,7 @@ export component ModulesList {
                 module_description: "Mantenha seu sistema atualizado com os últimos patches de segurança.";
                 navigate_to(page) => { root.navigate_to(page); }
             }
-    
+
             WelcomeWindowModule {
                 module_title: "Suporte Técnico";
                 module_name: "support";
@@ -46,5 +47,5 @@ export component ModulesList {
 
 
     }
-    
+
 }
