@@ -1,0 +1,23 @@
+import { StoragePercentage } from "./storage_percentage.slint";
+
+export component FeaturesList {
+    width: 1100px;
+    height: 720px;
+
+    in property <int> disk_usage;
+
+
+    GridLayout {
+        width: parent.width * 0.85;
+        height: parent.height * 0.6;
+
+
+        
+        Row {
+            StoragePercentage {
+                disk_usage_percentage: root.disk_usage;
+            }
+        }
+    }
+    
+}

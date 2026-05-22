@@ -20,22 +20,22 @@ export component SupportPage {
         
 
         HorizontalLayout {
-        height: parent.height * 0.15;
-        alignment: center;
-        padding-top: 24px;
-        padding-bottom: 24px;
+            height: parent.height * 0.15;
+            alignment: center;
+            padding-top: 24px;
+            padding-bottom: 24px;
 
-        Text { text: "Suporte Técnico"; font-size: 28px; font-weight: 700; color: #F8FAFC; }
-        }
+            Text { text: "Suporte Técnico"; font-size: 28px; font-weight: 700; color: #F8FAFC; }
+            }
 
-        ScriptsList {
-            height: parent.height * 0.3;
-            width: parent.width * 0.85;
+            ScriptsList {
+                height: parent.height * 0.3;
+                width: parent.width * 0.85;
 
-            handle_script_module_click(name, description) => { root.handle_script_module_select(name, description); }
-            handle_script_execution => {root.handle_script_execution();}
-            
-        }
+                handle_script_module_click(name, description) => { root.handle_script_module_select(name, description); }
+                handle_script_execution => {root.handle_script_execution();}
+                
+            }
 
 
 

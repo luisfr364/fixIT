@@ -1,4 +1,4 @@
-import {HeaderWelcomeWindow} from "../components/welcome_page/header_welcome_window.slint";
+import {PagesHeader} from "../components/shared/pages_header.slint";
 import {WelcomePageStats} from "../components/welcome_page/welcome_page_stats.slint";
 import { ModulesList } from "../components/welcome_page/modules_list.slint";
 
@@ -6,7 +6,7 @@ import { ModulesList } from "../components/welcome_page/modules_list.slint";
 export component WelcomePage {
 
     // TO-DO: Refactor code to use global AppState properties instead of local ones
-    // When slint fix the global 
+    // When slint fix the global
     in-out property <int> memory_usage: 0;
     in-out property <int> cpu_usage: 0;
     in-out property <int> disk_usage: 0;
@@ -21,8 +21,10 @@ export component WelcomePage {
         padding-top: 40px;
         alignment: start;
 
-        HeaderWelcomeWindow {}
-    
+        PagesHeader {
+            header_text: "Bem-vindo ao fixIT";
+        }
+
         HorizontalLayout {
             alignment: center;
             WelcomePageStats {
@@ -47,7 +49,7 @@ export component WelcomePage {
 
                 drop-shadow-color: #00000040;
                 drop-shadow-blur: 8px;
-                drop-shadow-offset-y: 4px;  
+                drop-shadow-offset-y: 4px;
             }
 
             ModulesList {
@@ -56,5 +58,5 @@ export component WelcomePage {
             }
         }
     }
-    
+
 }

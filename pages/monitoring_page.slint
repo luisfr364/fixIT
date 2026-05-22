@@ -1,0 +1,22 @@
+import {PagesHeader} from "../components/shared/pages_header.slint";
+import { FeaturesList } from "../components/monitoring_page/features_list.slint";
+
+export component MonitoringPage {
+
+
+    in property <int> disk_usage;
+
+
+    VerticalLayout {
+
+        PagesHeader {
+            header_text: "Monitoramento do Sistema";
+        }
+
+        FeaturesList {
+            width: parent.width;
+            disk_usage: root.disk_usage;
+        }
+
+    }
+}

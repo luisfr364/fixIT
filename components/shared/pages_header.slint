@@ -1,0 +1,12 @@
+export component PagesHeader {
+    
+    in property <string> header_text;
+
+    HorizontalLayout {
+        alignment: center;
+        padding-top: 24px;
+        padding-bottom: 24px;
+
+        Text { text: header_text; font-size: 28px; font-weight: 700; color: #F8FAFC; }
+    }
+}

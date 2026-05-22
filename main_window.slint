@@ -1,6 +1,7 @@
 
 import { WelcomePage } from "./pages/welcome_page.slint";
 import { SupportPage } from "pages/support_page.slint";
+import { MonitoringPage } from "pages/monitoring_page.slint";
 
 
 export component MainWindow inherits Window {
@@ -53,6 +54,15 @@ export component MainWindow inherits Window {
 
         // TO-DO: Implement later
         // navigate_back() => { root.current_page = "welcome"; }
+    }
+
+    if (root.current_page == "monitoring") : MonitoringPage {
+        width: parent.width;
+        height: parent.height;
+
+        disk_usage: root.disk_usage;
+
+         // TO-DO: Implement later
     }
 
 
