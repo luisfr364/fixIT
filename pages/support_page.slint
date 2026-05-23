@@ -1,8 +1,9 @@
 import { ScriptsList } from "../components/support_page/scripts_list.slint";
 import { ScriptDetails } from "../components/support_page/script_details.slint";
 import { PseudoConcosole } from "../components/support_page/pseudo_console.slint";
+import { PagesHeader } from "../components/shared/pages_header.slint";
 export component SupportPage {
-    
+
     // Temp properties for testing
     // TO-DO: Change to parent.width and parent.height
     width: 1100px;
@@ -13,30 +14,33 @@ export component SupportPage {
 
     callback handle_script_module_select(name: string, description: string);
     callback handle_script_execution();
+    callback navigate_to(string);
 
 
     VerticalLayout {
 
-        
+        PagesHeader {
+            header_text: "Suporte Técnico";
+            navigate_to(page) => {
+                root.navigate_to(page)
+            }
+        }
 
         HorizontalLayout {
-            height: parent.height * 0.15;
+            height: parent.height * 0.30;
             alignment: center;
             padding-top: 24px;
             padding-bottom: 24px;
 
-            Text { text: "Suporte Técnico"; font-size: 28px; font-weight: 700; color: #F8FAFC; }
-            }
 
             ScriptsList {
-                height: parent.height * 0.3;
+                height: parent.height * 0.85;
                 width: parent.width * 0.85;
 
                 handle_script_module_click(name, description) => { root.handle_script_module_select(name, description); }
                 handle_script_execution => {root.handle_script_execution();}
-                
             }
-
+        }
 
 
         HorizontalLayout {
@@ -58,11 +62,6 @@ export component SupportPage {
                 width: root.width * 0.50;
                 height: root.height * 0.40;
             }
-
         }
-        
-
-
     }
-    
 }

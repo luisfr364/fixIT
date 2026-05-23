@@ -15,22 +15,22 @@ export component ScriptsList {
         { name: "Atualização de Drivers", description: "Mantenha seus drivers atualizados para\nmelhor desempenho e estabilidade." },
         {name: "Test", description: "Test description"}
     ];
-    
+
     VerticalLayout {
-        padding-left: 24px;
+        padding-left: 25px;
 
         ScrollView {
             width: root.width;
             height: root.height;
             viewport-width: self.width;
             viewport-height: 300px;
-    
-    
-    
+
+
+
             GridLayout {
-                width: parent.width;  
+                width: parent.width;
                 spacing: 16px;
-    
+
                 for module[i] in scripts : ScriptModule {
                     row: Math.floor(i / 2);
                     col: Math.mod(i, 2);
@@ -49,5 +49,5 @@ export component ScriptsList {
             }
     }
     }
-    
+
 }

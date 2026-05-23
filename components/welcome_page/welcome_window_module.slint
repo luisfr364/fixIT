@@ -3,7 +3,7 @@ export component WelcomeWindowModule {
     in property <string> module_name;
     in property <string> module_title;
     in property <string> module_description;
-    in-out property <int> name; 
+    in-out property <int> name;
 
     callback navigate_to(string);
 
@@ -20,8 +20,6 @@ export component WelcomeWindowModule {
         drop-shadow-offset-y: 4px;
 
         TouchArea {
-            x: 89px;
-            width: 557px;
             clicked => {
                 root.navigate_to(module_name);
             }

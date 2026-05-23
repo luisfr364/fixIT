@@ -5,12 +5,16 @@ export component MonitoringPage {
 
 
     in property <int> disk_usage;
+    callback navigate_to(string);
 
 
     VerticalLayout {
 
         PagesHeader {
             header_text: "Monitoramento do Sistema";
+            navigate_to(page) => {
+                root.navigate_to(page);
+            }
         }
 
         FeaturesList {

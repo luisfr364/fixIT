@@ -1,12 +1,52 @@
+import { VerticalBox, HorizontalBox } from "std-widgets.slint";
 export component PagesHeader {
-    
+
+    //TODO: Add a button to return to the welcome page
     in property <string> header_text;
 
+    callback navigate_to(string);
+
     HorizontalLayout {
-        alignment: center;
         padding-top: 24px;
         padding-bottom: 24px;
 
-        Text { text: header_text; font-size: 28px; font-weight: 700; color: #F8FAFC; }
+
+
+        if (header_text != "Bem-vindo ao fixIT") : HorizontalLayout {
+
+            HorizontalLayout {
+                alignment: start;
+                width: 32px;
+                height: 32px;
+                padding-left: 100px;
+                Rectangle {
+                    //Rectangle must have the same dimensions of
+                    width: parent.width;
+                    height: parent.height;
+
+                    TouchArea {
+                        clicked => {
+                            root.navigate_to("welcome");
+                        }
+                    }
+
+                    Image {
+                        width: 32px;
+                        height: 32px;
+                        source: @image-url("../../public/images/arrow-left.png");
+                    }
+                }
+            }
+        }
+
+
+
+
+
+        HorizontalBox {
+            alignment: center;
+            padding-right: 32px; //Cancels the padding added by the image
+            Text { text: header_text; font-size: 28px; font-weight: 700; color: #F8FAFC; }
+        }
     }
 }
