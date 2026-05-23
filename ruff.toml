@@ -1,0 +1,6 @@
+[lint]
+select = ["E", "F", "B", "I", "UP"]
+
+
+fixable = ["ALL"]
+unfixable = []
