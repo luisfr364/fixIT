@@ -1,5 +1,7 @@
-import {PagesHeader} from "../components/shared/pages_header.slint";
-import {WelcomePageStats} from "../components/welcome_page/welcome_page_stats.slint";
+import { PagesHeader } from "../components/shared/pages_header.slint";
+import {
+    WelcomePageStats,
+} from "../components/welcome_page/welcome_page_stats.slint";
 import { ModulesList } from "../components/welcome_page/modules_list.slint";
 
 
@@ -14,7 +16,6 @@ export component WelcomePage {
 
     // Callback function passed down to module list and then to each module
     callback navigate_to(string);
-
 
     VerticalLayout {
         spacing: 32px;
@@ -40,7 +41,12 @@ export component WelcomePage {
             padding-left: 40px;
             padding-right: 40px;
             spacing: 16px;
-            Text { text: "O que deseja utilizar?"; font-size: 24px; color: #94A3B8; font-weight: 600; }
+            Text {
+                text: "O que deseja utilizar?";
+                font-size: 24px;
+                color: #ffffff;
+                font-weight: 600;
+            }
 
             Rectangle {
                 width: parent.width - 80px;
@@ -54,9 +60,10 @@ export component WelcomePage {
 
             ModulesList {
                 width: parent.width - 80px;
-                navigate_to(page) => { root.navigate_to(page); }
+                navigate_to(page) => {
+                    root.navigate_to(page);
+                }
             }
         }
     }
-
 }

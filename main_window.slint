@@ -7,13 +7,12 @@ import { MonitoringPage } from "pages/monitoring_page.slint";
 export component MainWindow inherits Window {
     width: 1100px;
     height: 720px;
-    background: #0F172A;
+    background: #0B1220;
     title: "fixIT - Dashboard";
 
-
-    // Callbacks used by components
+    // Callbacks used by components *they need to be centralized here*
     callback navigate_to(string);
-    callback handle_script_module_click(name: string, description: string);
+    callback handle_script_module_select(string, string, string, image);
     callback handle_script_execution();
 
     // Property used to control which page is currently being displayed in the MainWindow
@@ -28,9 +27,15 @@ export component MainWindow inherits Window {
 
     //Support page propertiess
     in-out property <string> console_output: "Nenhuma saída ainda...";
-    in-out property <{name: string, description: string, name_short: string}> selected_script: {name: "", description: "", name_short: ""};
+    in-out property <{
+        name: string,
+        description: string,
+        name_short: string,
+        description_long: string,
+        img_url: image
+    }> selected_script: { name: "", description: "", name_short: "", description_long: "", img_url: @image-url("") };
 
-    if (root.current_page == "welcome") : WelcomePage {
+    if (root.current_page == "welcome"): WelcomePage {
         width: parent.width;
         height: parent.height;
 
@@ -39,27 +44,33 @@ export component MainWindow inherits Window {
         disk_usage: root.disk_usage;
         is_connected: root.is_connected;
 
-        navigate_to(page) => { root.navigate_to(page); }
-
+        navigate_to(page) => {
+            root.navigate_to(page);
+        }
     }
 
-    if (root.current_page == "support") : SupportPage {
+    if (root.current_page == "support"): SupportPage {
         width: parent.width;
         height: parent.height;
-
 
         console_output: root.console_output;
         selected_script: root.selected_script;
 
-        handle_script_module_select(name, description) => { root.handle_script_module_click(name, description); }
-        handle_script_execution => {root.handle_script_execution()}
-        navigate_to(page) => { root.navigate_to(page); }
+        handle_script_module_select(name, description, description_long, img_url) => {
+            root.handle_script_module_select(name, description, description_long, img_url);
+        }
+        handle_script_execution => {
+            root.handle_script_execution()
+        }
+        navigate_to(page) => {
+            root.navigate_to(page);
+        }
 
         // TO-DO: Implement later
         // navigate_back() => { root.current_page = "welcome"; }
     }
 
-    if (root.current_page == "monitoring") : MonitoringPage {
+    if (root.current_page == "monitoring"): MonitoringPage {
         width: parent.width;
         height: parent.height;
 
@@ -69,6 +80,4 @@ export component MainWindow inherits Window {
             root.navigate_to(page)
         }
     }
-
-
 }

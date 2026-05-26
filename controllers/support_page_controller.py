@@ -8,21 +8,26 @@ class SupportPageController:
         self.app = app
 
     # Add a new line to the console output in the UI
-    # Used on the callback of the script execution to show the output of the script in the console
+    # Used on the callback of the script execution to show
+    # the output of the script in the console
     @slint.callback
     def update_console_output(self, new_message):
         message = self.app.console_output
         self.app.console_output = message + "\n" + new_message
 
     @slint.callback
-    def on_script_module_click(self, name, description):
+    def on_script_module_click(self, name, description, description_long, img_url):
         print(f"Script selecionado: {name} - {description}")
 
         self.app.selected_script = {
             "name": name,
             "description": description,
-            "name_short": name[:24] + "..." if len(name) > 24 else name,
-        }  # Example: truncate name to first 24 characters
+            "name_short": name[:24] + "..."
+            if len(name) > 24
+            else name,  # Example: truncate name to first 24 characters
+            "description_long": description_long,
+            "img_url": img_url,
+        }
 
     # Call the scripts helper to run the scripts based on the selected_script var
     @slint.callback

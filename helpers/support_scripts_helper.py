@@ -1,7 +1,6 @@
 import asyncio
 import os
 import subprocess
-import time
 
 
 class SupportScriptsHelper:
@@ -51,7 +50,7 @@ class SupportScriptsHelper:
             },
             {"command": "ipconfig /renew", "description": "Renovando endereço IP...\n"},
             {"command": "ipconfig /flushdns", "description": "Limpando cache DNS...\n"},
-            {"command": "netsh winsock reset", "description": "Resetando Winsock...\n"},
+            # {"command": "netsh winsock reset", "description": "Resetando Winsock...\n"}, // TODO: Implement a way to escalate rights
         ]
 
         for cmd in commands:

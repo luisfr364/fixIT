@@ -1,10 +1,16 @@
 export component ScriptDetails {
 
-    in-out property <{name: string, description: string, name_short: string}> selected_script;
+    in-out property <{
+        name: string,
+        description: string,
+        name_short: string,
+        description_long: string,
+        img_url: image
+    }> selected_script;
 
     Rectangle {
 
-        background: #0053d8;
+        background: #162033;
         border-radius: 8px;
 
         VerticalLayout {
@@ -12,16 +18,27 @@ export component ScriptDetails {
             padding-top: 24px;
 
             HorizontalLayout {
+                spacing: 2px;
                 Image {
-                    width: 60px;
-                    height: 60px;
+                    width: 30px;
+                    height: 30px;
+                    source: root.selected_script.img_url;
                 }
-                Text { text: root.selected_script.name_short; font-size: 28px; font-weight: 700; color: #F8FAFC; }
+
+                Text {
+                    text: root.selected_script.name_short;
+                    font-size: 28px;
+                    font-weight: 700;
+                    color: #F8FAFC;
+                }
             }
 
-            Text { text: root.selected_script.description; font-size: 18px; font-weight: 400; color: #94A3B8; }
+            Text {
+                text: root.selected_script.description_long.is-empty ? "Nenhum script selecionado" : root.selected_script.description_long;
+                font-size: 18px;
+                font-weight: 400;
+                color: #94A3B8;
+            }
         }
     }
-
-
 }

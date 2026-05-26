@@ -1,15 +1,16 @@
-import { Button } from "std-widgets.slint";
+import { Button, VerticalBox } from "std-widgets.slint";
 export component ScriptModule {
 
     in property <string> script_name;
     in property <string> script_description;
-    callback handle_script_module_click(string, string);
+    in property <string> description_long;
+    in property <image> img_url;
+    callback handle_script_module_click(string, string, string, image);
     callback handle_script_execution();
 
     Rectangle {
 
-
-        background: #1E293B;
+        background: #162033;
         border-radius: 12px;
         border-width: 1px;
         border-color: #334155;
@@ -19,90 +20,74 @@ export component ScriptModule {
         drop-shadow-blur: 8px;
         drop-shadow-offset-y: 4px;
 
+        TouchArea {
+            clicked => {
+                root.handle_script_module_click(root.script_name, root.script_description, root.description_long, root.img_url);
+            }
+        }
 
+        HorizontalLayout {
+            padding-top: 16px;
+            padding-bottom: 20px;
 
-            TouchArea {
-                clicked => {
-                    root.handle_script_module_click(root.script_name, root.script_description);
+            spacing: 16px;
+
+            //Here only to add margins
+            VerticalBox {
+                width: 40px;
+                height: 40px;
+            }
+
+            VerticalLayout {
+                alignment: start;
+                width: 280px;
+                Text {
+                    text: root.script_name;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: #F8FAFC;
+                }
+
+                Text {
+                    text: root.script_description;
+                    font-size: 14px;
+                    color: #94A3B8;
+                    font-weight: 600;
                 }
             }
 
-
-            HorizontalLayout {
-                padding-top: 16px;
-                padding-bottom: 20px;
-
-
-                spacing: 16px;
-
-                Image {
-                    width: 40px;
-                    height: 40px;
-                }
-
-
-
+            // Used to add a "margin" with padding
                 VerticalLayout {
-                    alignment: start;
-                    width: 280px;
-                    Text {
-                        text: root.script_name;
-                        font-size: 16px;
-                        font-weight: 700;
-                        color: #F8FAFC;
+                padding-top: 24px;
+
+                Rectangle {
+                    background: #334155;
+                    border-radius: 30px;
+                    width: 80px;
+                    height: 30px;
+
+                    TouchArea {
+
+                        clicked => {
+                            root.handle_script_module_click(root.script_name, root.script_description, root.description_long, root.img_url);
+                            root.handle_script_execution();
+                        }
                     }
 
-                    Text {
-                        text: root.script_description;
-                        font-size: 14px;
-                        color: #94A3B8;
-                        font-weight: 600;
-                    }
-                }
-
-
-                // Used to add a "margin" with padding
-                VerticalLayout {
-                    padding-top: 24px;
-
-                    Rectangle {
-                        background: #334155;
-                        border-radius: 30px;
-                        width: 80px;
+                    VerticalLayout {
+                        alignment: center;
+                        width: 60px;
                         height: 30px;
 
-
-
-                        TouchArea {
-
-                            clicked => {
-                                root.handle_script_module_click(root.script_name, root.script_description);
-                                root.handle_script_execution();
-                            }
-                        }
-
-
-                        VerticalLayout {
-                            alignment: center;
-                            width: 60px;
-                            height: 30px;
-
-                            Text {
-                                text: "Executar";
-                                color: #F8FAFC;
-                                font-size: 14px;
-                                font-weight: 600;
-                            }
+                        Text {
+                            text: "Executar";
+                            color: #F8FAFC;
+                            font-size: 14px;
+                            font-weight: 600;
                         }
                     }
                 }
-
-
             }
-
-
-
-
+        }
     }
-
 }
