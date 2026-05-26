@@ -22,6 +22,7 @@ class App(ui_slint):
         self.handle_script_module_select = (
             self.support_page_controller.on_script_module_click
         )
+
         self.navigate_to = self.modules_list_controller.on_navigate_to
         self.handle_script_execution = self.support_page_controller.on_run_script
 

@@ -8,25 +8,27 @@ export component ModulesList {
         width: parent.width;
         spacing: 20px;
 
-
         Row {
 
             WelcomeWindowModule {
+                width: 50%; // Width is set on all modules to keep them with the same size
                 module_title: "Monitoramento";
                 module_name: "monitoring";
-                module_description: "Acompanhe o desempenho do seu sistema em tempo real.";
-                navigate_to(page) => { root.navigate_to(page); }
+                module_description: "Acompanhe as estatística do seu sistema.";
+                navigate_to(page) => {
+                    root.navigate_to(page);
+                }
             }
-
 
             WelcomeWindowModule {
+                width: 50%;
                 module_title: "Suporte Técnico";
                 module_name: "support";
-                module_description: "Obtenha ajuda e suporte para resolver problemas técnicos.";
-                navigate_to(page) => { root.navigate_to(page); }
+                module_description: "Resolva problemas técnicos simples com poucos cliques.";
+                navigate_to(page) => {
+                    root.navigate_to(page);
+                }
             }
-
-
         }
 
         Row {
@@ -47,9 +49,5 @@ export component ModulesList {
             // }
 
         }
-
-
-
     }
-
 }
