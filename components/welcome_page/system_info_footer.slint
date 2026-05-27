@@ -1,0 +1,19 @@
+export component SystemInfoFooter {
+    in property <{ os: string, cpu_name: string}> system_info;
+
+    HorizontalLayout {
+        alignment: center;
+        spacing: 24px;
+        Text {
+            text: "OS: " + root.system_info.os;
+            font-size: 12px;
+            color: #94A3B8;
+        }
+
+        Text {
+            text: "CPU: " + root.system_info.cpu_name;
+            font-size: 12px;
+            color: #94A3B8;
+        }
+    }
+}

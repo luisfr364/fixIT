@@ -1,4 +1,7 @@
 import datetime
+import platform
+import re
+import subprocess
 import urllib.request
 
 import psutil
@@ -29,7 +32,9 @@ class WelcomePageController:
             self.check_connection,
         )
 
+        # Executed on startup
         self.check_connection()  # Check connection immediately on startup
+        self.get_system_info()
 
     def update_statistics(self):
         # 1. Coleta os dados (fora do loop da UI para não travar)
@@ -48,3 +53,16 @@ class WelcomePageController:
             print("Conexão OK")
         except:
             self.app.is_connected = False
+
+    def get_system_info(self):
+        cpu_stdout = subprocess.run(
+            ["wmic", "cpu", "get", "name"], shell=True, capture_output=True
+        ).stdout.decode("utf-8")
+
+        cpu_name = re.findall(
+            r"^[^Name][\n]*[\w\W]+[^\W]", cpu_stdout, re.MULTILINE
+        )  # Find the cpu name str using regex
+
+        os = platform.platform()
+
+        self.app.system_info = {"os": os, "cpu_name": cpu_name[0].strip()}
