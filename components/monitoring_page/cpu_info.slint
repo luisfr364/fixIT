@@ -1,0 +1,67 @@
+export component CpuInfo {
+    width: 200px;
+    height: 220px;
+
+    in property <{ cpu_name: string, cpu_core_count: string, cpu_thread_count: string}> cpu_info: { cpu_name: "Desconecido", cpu_core_count: "0", cpu_thread_count: "0" };
+
+    Rectangle {
+        background: #1E293B;
+        border-radius: 12px;
+        border-width: 1px;
+        border-color: #334155;
+
+        drop-shadow-color: #00000040;
+        drop-shadow-blur: 8px;
+        drop-shadow-offset-y: 4px;
+
+        VerticalLayout {
+            alignment: start;
+            spacing: 16px;
+            padding: 16px;
+
+            Text {
+                text: root.cpu_info.cpu_name;
+                font-size: 14px;
+                font-weight: 700;
+                color: #F8FAFC;
+                horizontal-alignment: start;
+            }
+
+            HorizontalLayout {
+                spacing: 25px;
+                alignment: start;
+
+                Text {
+                    text: "Cores";
+                    font-size: 12px;
+                    color: #94A3B8;
+                }
+
+                Text {
+                    text: root.cpu_info.cpu_core_count;
+                    font-size: 14px;
+                    font-weight: 700;
+                    color: #F8FAFC;
+                }
+            }
+
+            HorizontalLayout {
+                spacing: 25px;
+                alignment: start;
+
+                Text {
+                    text: "Threads:";
+                    font-size: 12px;
+                    color: #94A3B8;
+                }
+
+                Text {
+                    text: root.cpu_info.cpu_thread_count;
+                    font-size: 14px;
+                    font-weight: 700;
+                    color: #F8FAFC;
+                }
+            }
+        }
+    }
+}

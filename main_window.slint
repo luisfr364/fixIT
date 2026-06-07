@@ -25,6 +25,7 @@ export component MainWindow inherits Window {
     in-out property <int> disk_usage: 0;
     in-out property <bool> is_connected: false;
     in-out property <{ os: string, cpu_name: string}> system_info;
+    in-out property <{ cpu_name: string, cpu_core_count: string, cpu_thread_count: string}> cpu_info;
 
     //Support page propertiess
     in-out property <string> console_output: "Nenhuma saída ainda...";
